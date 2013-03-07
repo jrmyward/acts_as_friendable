@@ -1,0 +1,19 @@
+sqlite3:
+  adapter: sqlite3
+  database: acts_as_friendable.sqlite3
+
+mysql:
+  adapter: mysql2
+  hostname: localhost
+  username: root
+  password:
+  database: acts_as_friendable
+  charset: utf8
+
+postgresql:
+  adapter: postgresql
+  hostname: localhost
+  username: postgres
+  password:
+  database: acts_as_friendable
+  encoding: utf8
