@@ -1,6 +1,6 @@
 # ActsAsFriendable
 
-TODO: Write a gem description
+A drop-in solution to add Friendship functionality to a Rails applicationl
 
 ## Installation
 
