@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "acts_as_friendable"
   spec.version       = ActsAsFriendable::VERSION
   spec.authors       = ["Jeremy Ward"]
-  spec.email         = ["jeremy.ward@digital-ocd.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.email         = ["jrmy.ward@gmail.com"]
+  spec.description   = %q{ActsAsFriendable provides a Friendship model, relevent scopes, and many instance methods to quickly and easily add Social Networking functionality to your Rails application.}
+  spec.summary       = %q{A drop-in solution to add Friendship functionality to a Rails application.}
+  spec.homepage      = "https://github.com/jrmyward/acts_as_friendable"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
