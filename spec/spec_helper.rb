@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'acts_as_friendable'
 require 'ammeter/init'
 require 'database_cleaner'
@@ -40,7 +41,7 @@ if File.exists?(database_yml)
   end
 
 else
-  raise "Please create #{database_yml} first to configure your database. Take a look at: spec/config/#{database_yml}.sample"
+  raise "Please create #{database_yml} first to configure your database. Take a look at: spec/config/database.yml.sample"
 end
 
 RSpec.configure do |config|
