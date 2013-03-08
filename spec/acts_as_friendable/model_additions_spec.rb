@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe ActsAsFriendable do
-  let(:user) { User.create!({ first_name: 'James', last_name: 'Bond' }) }
+  let(:user) { User.create!({ first_name: 'Bruce', last_name: 'Wayne' }) }
+  let(:user_2) { User.create!({ first_name: 'Clark', last_name: 'Kent' }) }
+  let(:user_3) { User.create!({ first_name: 'Peter', last_name: 'Parker' }) }
+  let(:user_4) { User.create!({ first_name: 'Bruce', last_name: 'Banner' }) }
 
   describe "Reciever" do
     it "should respond to friendships" do
@@ -29,4 +32,61 @@ describe ActsAsFriendable do
     end
   end
   
+  describe "Scope" do
+    before(:each) do
+      ActsAsFriendable::Friendship.create({user_id: user.id, friend_id: user_2.id, approved: true})
+      ActsAsFriendable::Friendship.create({user_id: user_3.id, friend_id: user.id, approved: true})
+      ActsAsFriendable::Friendship.create({user_id: user_4.id, friend_id: user.id, approved: false})
+    end
+
+    describe "friendships" do
+      it "collects all user-initiated relationships" do
+        r = user.friendships
+        r[0].friend_id.should == user_2.id
+      end
+    end
+
+    describe "inverse_friendships" do
+      it "collects all stranger-initiated relationships" do
+        r = user.inverse_friendships
+        r[0].user_id.should == user_3.id
+      end
+    end
+
+    describe "direct_friends" do
+      it "collects approved user-initiated relationships" do
+        r = user.direct_friends
+        r[0].id.should == user_2.id
+      end
+    end
+
+    describe "inverse_friends" do
+      it "collects approved stranger-initiated relationships" do
+        r = user.inverse_friends
+        r[0].id.should == user_3.id
+      end
+    end
+
+    describe "pending_friends" do
+      it "collects un-approved user-initiated relationships" do
+        r = user_4.pending_friends
+        r[0].id.should == user.id
+      end
+    end
+
+    describe "requested_friendships" do
+      it "collects un-approved stranger-initiated relationships" do
+        r = user.requested_friendships
+        r[0].id.should == user_4.id
+      end
+    end
+  end
+
+  # describe "Instance Method" do
+  #   describe "friend_ids" do
+  #     it "should return an array" do
+  #       user.friend_ids.should be_an_instance_of Array
+  #     end
+  #   end
+  # end
 end
