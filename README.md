@@ -33,11 +33,11 @@ ActsAsFriendable is meant to be used on one Active Record model. The model can b
 
 ```ruby
 class User < ActiveRecord::Base
-  acts_as_friendable
+  include ActsAsFriendable
 end
 ```
 
-The `is_friendable` method adds all of the ActsAsFriendable goodness to the model.
+`include ActsAsFriendable` adds all of the ActsAsFriendable goodness to the model.
 
 ### Scopes and Methods
 
@@ -58,7 +58,7 @@ With that understanding we have the following scopes / "lookup" methods availabl
 
 ```ruby
 class User < ActiveRecord::Base
-  acts_as_friendable
+  include ActsAsFriendable
 end
 
 @user = User.find(1) # assuming there is a user in the database

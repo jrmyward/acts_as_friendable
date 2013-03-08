@@ -1,6 +1,9 @@
 module ActsAsFriendable
-  def acts_as_friendable
-    
+  module ClassMethods
+
+  end
+
+  module InstanceMethods
+
   end
 end
-ActiveRecord::Base.extend ActsAsFriendable
