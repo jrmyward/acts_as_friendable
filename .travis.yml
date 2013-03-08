@@ -1,6 +1,6 @@
 before_script:
   - mysql -e 'create database acts_as_friendable;'
-  - psql -c 'create database acts_as_friendable;' -U postgres;'
+  - psql -c 'create database acts_as_friendable;' -U postgres
 script: "cp spec/config/database.yml.sample spec/config/database.yml && bundle install && bundle exec rake"
 language: ruby
 rvm:
