@@ -5,6 +5,14 @@ describe ActsAsFriendable do
   let(:user_2) { User.create!({ first_name: 'Clark', last_name: 'Kent' }) }
   let(:user_3) { User.create!({ first_name: 'Peter', last_name: 'Parker' }) }
   let(:user_4) { User.create!({ first_name: 'Bruce', last_name: 'Banner' }) }
+  let(:user_5) { User.create!({ first_name: 'Tony', last_name: 'Stark' }) }
+
+  before(:each) do
+    ActsAsFriendable::Friendship.create({user_id: user.id, friend_id: user_2.id, approved: true})
+    ActsAsFriendable::Friendship.create({user_id: user_3.id, friend_id: user.id, approved: true})
+    ActsAsFriendable::Friendship.create({user_id: user_4.id, friend_id: user.id, approved: false})
+    ActsAsFriendable::Friendship.create({user_id: user.id, friend_id: user_5.id, approved: false})
+  end
 
   describe "Reciever" do
     it "should respond to friendships" do
@@ -31,13 +39,8 @@ describe ActsAsFriendable do
       user.should respond_to(:requested_friendships)
     end
   end
-  
+
   describe "Scope" do
-    before(:each) do
-      ActsAsFriendable::Friendship.create({user_id: user.id, friend_id: user_2.id, approved: true})
-      ActsAsFriendable::Friendship.create({user_id: user_3.id, friend_id: user.id, approved: true})
-      ActsAsFriendable::Friendship.create({user_id: user_4.id, friend_id: user.id, approved: false})
-    end
 
     describe "friendships" do
       it "collects all user-initiated relationships" do
@@ -80,13 +83,38 @@ describe ActsAsFriendable do
         r[0].id.should == user_4.id
       end
     end
+
+    describe "friends" do
+      it "collects a user's approved direct_friends and inverse_friends" do
+        r = user.friends
+        r[0].id.should == user_2.id
+        r[1].id.should == user_3.id
+      end
+    end
   end
 
-  # describe "Instance Method" do
-  #   describe "friend_ids" do
-  #     it "should return an array" do
-  #       user.friend_ids.should be_an_instance_of Array
-  #     end
-  #   end
-  # end
+  describe "Instance Method" do
+
+    describe "friend_ids" do
+      it "should return an array of all direct_friends and inverse_friends ids" do
+        user.friend_ids.include?(user_2.id).should be_true
+        user.friend_ids.include?(user_5.id).should be_false
+      end
+    end
+
+    describe "friend_ids_and_me" do
+      it "should return an array of approved friend ids plus the current user's id" do
+        user_3.friend_ids_and_me.should == [user.id, user_3.id]
+      end
+    end
+
+    describe "pending_and_friend_ids" do
+      it "should return an array of all approved friends and user-initiated pending friends" do
+        user.pending_and_friend_ids.include?(user_2.id).should be_true
+        user.pending_and_friend_ids.include?(user_5.id).should be_true
+      end
+    end
+
+  end
+
 end
