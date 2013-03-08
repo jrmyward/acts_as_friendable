@@ -8,13 +8,13 @@ ActsAsFriendable defines a "friendship" as a two-way relationship which is initi
 
 ## Installation
 
-Add ActsAsFriendable to you Gemfile:
+Add ActsAsFriendable to your Gemfile:
 
 ```ruby
  gem 'acts_as_friendable'
 ```
 
-And then intall it with bundler by executing:
+And then install it with bundler by executing:
 
 ```shell
 bundle install
@@ -50,9 +50,9 @@ Given the "friendship" definition in the Overview, we have 4 possible states of 
 
 States #1 and #2 are simply what we will be calling "friends." They are approved relationships, no matter the direction. Because we don’t care who requested the friendship once it’s approved, we will group these together.
 
-State #3 is what we call "pending friends." Other users whom the current user has requested to be friends with and which are awaiting approval. These are out of of the control of the current user and just waiting to be approved or rejected.
+State #3 is what we call "pending friends." Other users with whom the current user has requested to be friends and are awaiting approval. These are out of of the control of the current user and just waiting to be approved or rejected.
 
-State #4 is what we call "requested friends." Other user who have requested that the current user be their friend and are awaiting the approval of the current user. These are the actionable items for the current user to approve or reject. Ignoring a friend request simply deletes the non-approved Friendship (similar to Facebook). It doesn't the the other person they were reject but allows them to send another friend request if they want.
+State #4 is what we call "requested friends." Other users who have requested that the current user be their friend and are awaiting the approval of the current user. These are the actionable items for the current user to approve or reject. Ignoring a friend request simply deletes the non-approved Friendship (similar to Facebook). It doesn't tell the the other person they were reject but allows them to send another friend request if they want.
 
 With that understanding we have the following scopes / "lookup" methods available to us:
 
