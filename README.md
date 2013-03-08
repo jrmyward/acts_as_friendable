@@ -84,20 +84,16 @@ end
 #   - useful when you need to inlude the current user in a collection (Activities, Comments, Leaderboards, etc.)
 @user.friend_ids_and_me
 
-# returns a collection of user's given an array of id's
-#   - example: @friends  = @user.friends_in(@user.friend_ids)
-@user.friends_in(ids)
-
-# Class Method
-# returns a collection of user's NOT IN a given set
-#   - example: @users = query.blank? ? nil : User.exclude_users(current_user.pending_and_friend_ids).text_search(query)
-User.exclude_users(excluded_users)
 
 ```
 
 ## Testing
 
+ActsAsFriendable uses RSpec for its test coverage. Inside the gem directory, you can run the specs with:
 
+```shell
+rake
+```
 
 ## Contributing
 
