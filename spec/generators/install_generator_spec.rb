@@ -16,7 +16,7 @@ describe ActsAsFriendable::Generators::InstallGenerator do
     before { run_generator  }
 
     describe 'db/migrate/acts_as_friendable.rb' do
-      subject { file('db/migrate/acts_as_friendable.rb') }
+      subject { file('db/migrate/create_acts_as_friendable_friendships.rb') }
       it { should be_a_migration }
     end
   end

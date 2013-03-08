@@ -24,7 +24,7 @@ Install and run the migrations:
 
 ```shell
 rails g acts_as_friendable:install
-rails db:migrate
+rake db:migrate
 ```
 
 ## Usage

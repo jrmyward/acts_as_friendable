@@ -17,7 +17,7 @@ module ActsAsFriendable
       end
 
       def copy_migration
-        migration_template 'migration.rb', 'db/migrate/acts_as_friendable.rb'
+        migration_template 'friendships.rb', 'db/migrate/create_acts_as_friendable_friendships.rb'
       end
     end
   end
