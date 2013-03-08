@@ -1,5 +1,6 @@
 require "active_record"
 require "active_record/version"
+require "acts_as_friendable/model_additions"
 require "acts_as_friendable/version"
 
 module ActsAsFriendable

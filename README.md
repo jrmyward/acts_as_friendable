@@ -33,7 +33,7 @@ ActsAsFriendable is meant to be used on one Active Record model. The model can b
 
 ```ruby
 class User < ActiveRecord::Base
-  is_friendable
+  acts_as_friendable
 end
 ```
 
@@ -58,7 +58,7 @@ With that understanding we have the following scopes / "lookup" methods availabl
 
 ```ruby
 class User < ActiveRecord::Base
-  is_friendable
+  acts_as_friendable
 end
 
 @user = User.find(1) # assuming there is a user in the database
