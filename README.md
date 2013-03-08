@@ -1,4 +1,4 @@
-# ActsAsFriendable
+# ActsAsFriendable [![Build Status](https://travis-ci.org/jrmyward/acts_as_friendable.png?branch=master)](https://travis-ci.org/jrmyward/acts_as_friendable)
 
 ActsAsFriendable provides a Friendship model, relevent scopes, and many instance methods to quickly and easily add Social Networking functionality to your Rails application.
 
