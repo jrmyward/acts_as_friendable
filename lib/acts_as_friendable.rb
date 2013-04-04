@@ -21,6 +21,6 @@ module ActsAsFriendable
     end
 
     receiver.extend         ClassMethods
-    receiver.send :include, InstanceMethods
+    receiver.send :include
   end
 end
