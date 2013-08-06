@@ -92,7 +92,7 @@ end
 ActsAsFriendable uses RSpec for its test coverage. Inside the gem directory, you can run the specs with:
 
 ```shell
-rake
+bundle exec rake
 ```
 
 ## Contributing
